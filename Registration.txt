@@ -1,0 +1,226 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Registration Form</title>
+<script>
+function myFunction() {
+    location.reload();
+}
+</script>
+<style>
+ 
+.jumbotron {
+	background:white;
+	padding: 10px;
+	text-shadow: 4px 4px 4px rgba(147, 180, 189, 0.8);
+	color: midnightblue;
+	 margin-bottom: 0;
+}
+
+   P
+{
+ font-size:10px;
+}
+ 
+ p1{
+    border:1px solid rgba(147 ,108, 189, 0.8);
+   padding: 12px 4% 10px 4%;
+   position:absolute;
+   box-shadow: 0pt 2px 5px rgba(105,108,109,0.7),
+               0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset; 
+   border-radius:65px; 
+   }
+   
+input[type=text],input[type=password],select {
+	width: 42%;
+	border: 1px solid black;
+	border-radius: 1%;
+	padding: 4.5px 19px;
+}
+
+button {
+	padding: 12px 14px;
+	border: 1Px solid #cc;
+	cursor: pointer;
+	background-color: #4CAF50;
+	color: black;
+}
+
+.reset {
+	background-color:lightCoral;
+}
+.Error {
+	font-weight: bold;
+	font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+	font-size: 20px;
+	font-style: italic;
+}
+    #btn
+    {
+    background-color:coral;
+    }
+    
+    p2
+    {
+     text-shadow: 4px 4px 4px rgba(147 ,180, 189, 0.8);
+     color:midnightblue;
+     font-weight: bold;
+     font-family: 'FranchiseRegular', 'Arial Narrow', Arial, sans-serif;
+     font-style: italic;
+    } 
+  
+    .image {
+	border-radius: 50%;
+}
+
+</style>
+</head>
+<body background=
+	onload="noBack();" onpageshow="if (event.persisted) noBack();"
+	onunload="">
+	
+	<html:form name="RegisterUserForm"
+		type="com.wipro.TMS.actionforms.register.RegisterUserForm"
+		scope="request" onsubmit="return Register_validationform();"
+		method="post" action="RegisterUserSubmit.do">
+		
+		<div class="jumbotron text-center">
+    <p><img src ='width="100" height="90" class="wiprologo"></p>
+  <h1>TMS-Time Management System</h1>
+</div>
+   	   
+   <div class="container-fluid ">
+  <div class="row">
+  <div class="col-sm-1">
+  </div>
+    <div class="col-sm-4">
+  		<p><img src='<><width="600px" height="650px"></p>
+    </div>
+     <div class="col-sm-1">
+ 
+     </div>
+    <div class="col-sm-6" >	
+         
+			<p1><div class="table-responsive" cellpadding="3" cellspacing="3" style="width:100%;">
+			   <table class="table">
+				<center>
+					<p2><b><i>PROVIDE YOUR DETAILS HERE</i></b></p2>
+				</center>
+				<tr>
+					<td><i><b>User Name <font color="red">*</font></td>
+					<td><html:text property="empName" name="RegisterUserForm"
+							style="font-size: 12px;width:80%;" /></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>User ID<font color="red">*</font></td>
+					<td><html:text property="empId" name="RegisterUserForm"
+							style="font-size: 12px;width:80%;" /></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>Email ID <font color="red">*</font></td>
+					<td><html:text property="email" name="RegisterUserForm"
+							style="font-size: 12px;width:80%;" /></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>T-Number <font color="red">*</font></td>
+					<td><html:text property="tNumber" name="RegisterUserForm"
+							style="font-size: 12px;width:80%;" /></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>Project Name <font color="red">*</font></td>
+					<td><html:select name="RegisterUserForm"
+							property="projectName" style="font-size: 12px;width:80%;">
+							<html:option value="0"> Select Project Name </html:option>
+							<html:optionsCollection name="RegisterUserForm"
+								property="projectNameList" label="value" value="value_id" />
+						</html:select></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>Band<font color="red">*</font></td>
+					<td><html:select name="RegisterUserForm" property="band"
+							style="font-size: 12px;width:80%;">
+							<html:option value="0"> Select Band </html:option>
+							<html:optionsCollection name="RegisterUserForm"
+								property="bandList" label="value" value="value_id" />
+						</html:select></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>Mobile Number</td>
+					<td><html:text property="mobileNo" name="RegisterUserForm"
+							style="font-size: 12px;width:80%;" /></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>Location <font color="red">*</font></td>
+					<td><html:select name="RegisterUserForm" property="location"
+							style="font-size: 12px;width:80%;">
+							<html:option value="0"> Select Location </html:option>
+							<html:optionsCollection name="RegisterUserForm"
+								property="locationList" label="value" value="value_id" />
+						</html:select></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>Security Question <font color="red">*</font></td>
+					<td><html:select name="RegisterUserForm"
+							property="securityQues" style="font-size: 12px;width:80%;">
+							<html:option value="0"> Select Security Question </html:option>
+							<html:optionsCollection name="RegisterUserForm"
+								property="securityQuesList" label="value" value="value_id" />
+						</html:select></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>Answer <font color="red">*</font></td>
+					<td><html:text property="answer" name="RegisterUserForm"
+							style="font-size: 12px;width:80%;" /></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>New Password <font color="red">*</font></td>
+					<td><html:password property="newPassword"
+							name="RegisterUserForm" style="font-size: 12px;width:80%;" /></td>
+					
+				</tr>
+				<tr>
+					<td><i><b>Confirm Password</i> <font color="red">*</font></b></td>
+					<td><html:password property="confirmPassword"
+							name="RegisterUserForm" style="font-size: 12px;width:80%;" /></td>
+					
+				</tr>
+				</br>
+				</br>
+				<tr>
+					<td></td>
+					<td><button type="submit" style="color: black">
+							<b>REGISTER</b>
+						</button>&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="reset" class="reset" style="color: black" onclick="myFunction()">
+							<b>RESET</b>
+						</button> &nbsp;&nbsp;&nbsp;&nbsp;
+					  <button type="submit" style="color: black" id="btn"
+							formaction="Logout.do">
+							<b>BACK</b>
+						</button></td>
+				</tr>
+			</table></p1>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+		</div>
+	</html:form>
+	

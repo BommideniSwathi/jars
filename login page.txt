@@ -1,0 +1,166 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<SCRIPT type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+</SCRIPT>
+<script type="text/javascript">
+                 function Captcha(){
+                     var alpha = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+                     var i;
+                     for (i=0;i<6;i++){
+                       var a = alpha[Math.floor(Math.random() * alpha.length)];
+                       var b = alpha[Math.floor(Math.random() * alpha.length)];
+                       var c = alpha[Math.floor(Math.random() * alpha.length)];
+                       var d = alpha[Math.floor(Math.random() * alpha.length)];
+                       var e = alpha[Math.floor(Math.random() * alpha.length)];
+                       var f = alpha[Math.floor(Math.random() * alpha.length)];
+                       var g = alpha[Math.floor(Math.random() * alpha.length)];
+                      }
+                    var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' '+ f + ' ' + g;
+                    document.getElementById("mainCaptcha").value = code
+                  }
+                  function ValidCaptcha(){
+                      var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
+                      var string2 = removeSpaces(document.getElementById('txtInput').value);
+                      if (string1 == string2){
+                        return true;
+                      }
+                      else{ 
+                    	  alert("Enter Valid Captcha!");
+                    	  Captcha();
+                        return false;
+                      }
+                  }
+                  function removeSpaces(string){
+                    return string.split(' ').join('');
+                  }
+</script>    
+<title>TMS-LoginPage</title>
+</head>
+ <style>
+ .jumbotron{
+     background:white;
+     padding:10px;
+     text-shadow: 4px 4px 4px rgba(147 ,180, 189, 0.8);
+     color:midnightblue;
+     
+   } 
+   .url
+   {
+    font-family:'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+    color:midnightblue; 
+   }
+   
+ p1{
+   border:1px solid rgba(147 ,108, 189, 0.8);
+   padding: 12px 4% 10px 4%;
+   position:absolute;
+   box-shadow: 0pt 2px 5px rgba(105,108,109,0.7),
+               0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset; 
+   border-radius:65px;
+   }
+  .cancelbtn
+  {
+  padding:10px 12px;
+  border:1px solid #cc;
+  position:absolute;
+  background-color:lightCoral;
+ }
+  button
+  { 
+  background-color:#4CAF50;
+  padding:12px 14px;
+  border:1Px solid #cc;
+  cursor:pointer;
+ }   
+  .Error
+ {
+   font-weight:bold;
+   font-family:'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+   font-size:20px;
+   font-style:italic;
+   top:40%;
+   left:60%; 
+   
+ }  
+     p
+     {
+       font-family:'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+      color:midnightblue; 
+
+   
+     } 
+     
+     .container-fluid {
+    padding: 60px;
+}  
+      
+</style>
+</head>
+<body background='' onload="noBack(); Captcha();"
+    onpageshow="if (event.persisted) noBack();" onunload="">
+<form name="loginform" action="Login.do" onsubmit="return ValidCaptcha();" method="post">
+<div class="jumbotron text-center">
+    <p><img src =''width="100" height="90" class="wiprologo"></p>
+  <h1>TMS-Time Management System</h1>
+</div>
+   	      
+<div class="container-fluid ">
+  <div class="row">
+  <div class="col-sm-1">
+  </div>
+    <div class="col-sm-4">
+  		<img src=width="100%" height="80%">
+    </div>
+     <div class="col-sm-2">
+     </div>
+    <div class="col-sm-4" >		 	
+ 		 	
+       <div class="table-responsive">       
+          <p1><center><table class="table">
+           <tbody> 
+ 			<center><h4><b><p>USER LOGIN</p></b></h4></center>
+ 			<center><img src=''width="70px" height="80px" border="0"></center>
+				<tr>
+				 	<td><b>User ID <font color="red">*</font></b></td> 
+				 	<td><input type="text"  name="uname" autofocus></td>
+				</tr>
+				<tr>
+				 	<td><b>Password <font color="red">*</font></b></td> 
+					<td><input type="password" name="pwd"></td>
+				</tr>
+				<tr>           
+           			<td><b><input type="button" id="refresh" value="Refresh" onclick="Captcha();"/></b></td>
+             		<td><input type="text" id="mainCaptcha" readonly="readonly"/></td>
+         		</tr>
+          		<tr>
+          			<td></td>
+           			<td><input type="text" id="txtInput"/></td>
+         		</tr>
+				<tr>
+			 	  <td></td>
+	               <td><button type="submit" id="Button1"><b>Login</b></button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="cancelbtn" onclick="window.location.reload()"><b>Cancel</b></button></td> 
+	       		</tr> 
+	       			<td></td>
+		    <td><a href="RegisterPageDisplay.do" class="url"><b>Sign-up?</b></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ForgotPasswordDisplay.do" class="url"><b>Forgot Password?</b></a></td>	
+		 	</tr> 
+		 	</tbody>  
+	       		</table></center></p1>
+	       	</div>  
+	       	<div class="col-lg-1">
+	       	 
+	       	</div>
+    </div>
+  </div>
+  </div>
+  </form>
+ </body>
+ </html>
