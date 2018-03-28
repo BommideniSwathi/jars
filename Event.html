@@ -1,0 +1,79 @@
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+<script>
+function validation_register()
+	{  
+	var ename = document.eventregister.regname.value;
+	var alpha = /^[a-zA-Z]+$/;
+
+	if(ename==null || ename=="" || (!ename.match(alpha)))
+	{
+	alert ("Invalid name(it should contains only alphabets)");
+	return false;
+}
+var eloc=document.eventregister.loc.value;
+	if(eloc==0)
+	{
+	alert("Please select your location from the list");
+	return false;
+	}
+	var email1=document.eventregister.email.value;
+var atposition=email1.indexOf("@");
+var dotposition=email1.lastIndexOf(".");
+  if (email1==null || email1=="" || atposition<1 || dotposition<atposition+2 || dotposition+2>=email1.length)
+	{
+	alert("please enter a valid e-mail address");
+	return false;
+	}
+	var age1=document.eventregister.age.value;
+	{
+	if(age1==null || age1=="")
+	{
+	alert("please enter age");
+	return false;
+	}
+	if(age1<=18 || age1>=100)
+	{
+	alert("enter age greater than 18 and less than or equals to 100");
+	return false;
+	}
+	}
+	
+} 
+
+</script>
+</head>
+
+<body>
+<form name="eventregister" onsubmit="validation_register()">
+<table>
+<tr>
+<td>NAME<input type="text" name="regname"/></td>
+</tr>
+<tr>
+<td>
+ AGE<input type="text" name="age"/></td>
+ </tr>
+ <tr>
+<td> EMAIL-ID<input type="text" name="email"/></td>
+</tr>
+<tr><td>CITY<select  name="loc">
+    <option value="0">Select the Location</option>
+   <option>Rajkot</option>
+   <option>Vizag</option>
+   <option>Bangalore</option>
+   </select></td>
+   </tr>
+   <tr>
+   <td>
+   <input type="submit" name="submit" /></td>
+   </tr>
+   </table>
+   
+</form>
+</body>
+
+</html> 
